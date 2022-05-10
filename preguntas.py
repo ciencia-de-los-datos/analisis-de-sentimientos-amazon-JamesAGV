@@ -78,7 +78,7 @@ def pregunta_02():
 
     # Retorne `X_train`, `X_test`, `y_train` y `y_test`'''
     x_tagged, y_tagged, _,_ = pregunta_01()
-    x_train, x_test, y_train, y_test = train_test_split(x_prueba, 
+    x_train, x_test, y_train, y_test = train_test_split(x_tagged, 
                                                     y_tagged, 
                                                     test_size=0.1, 
                                                     random_state=12345)    
