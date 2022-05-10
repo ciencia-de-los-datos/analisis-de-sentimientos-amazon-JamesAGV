@@ -120,7 +120,7 @@ def pregunta_04():
     # Importe GridSearchCV
     # Importe Pipeline
     # Importe BernoulliNB
-    from ____ import ____
+    #from ____ import ____
 
     # Cargue las variables.
     x_train, _, y_train, _ = pregunta_02()
@@ -184,7 +184,7 @@ def pregunta_04():
                             binary=True,
                             max_df=1.0,
                             min_df=5,)
-    #countVectorizer.fit(x_train)
+    countVectorizer.fit(x_train)
     pipeline=Pipeline(steps=[('vectorizer',countVectorizer),
                             ('model', BernoulliNB())])
     param_grid={'model__alpha':np.linspace(0.1,1.0,10)}
