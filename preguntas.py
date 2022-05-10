@@ -13,6 +13,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk.stem import PorterStemmer
+from sklearn.model_selection import GridSearchCV
+from sklearn.pipeline import Pipeline
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.metrics import confusion_matrix
 
 def pregunta_01():
     """
@@ -129,7 +133,7 @@ def pregunta_04():
     # límite superior para la frecuencia de palabras es del 100% y un límite
     # inferior de 5 palabras. Solo deben analizarse palabras conformadas por
     # letras.
-    countVectorizer = ____(
+    ''''countVectorizer = ____(
         analyzer=____,
         lowercase=____,
         stop_words=____,
@@ -169,6 +173,24 @@ def pregunta_04():
     gridSearchCV.fit(x_train, y_train)
 
     # Retorne el mejor modelo
+    return gridSearchCV'''
+    countVectorizer=CountVectorizer(analyzer=analizador,
+                            lowercase=True,
+                            stop_words='english',
+                            token_pattern=r"(?u)\b\[a-zA-Z]\[a-zA-Z]+\b",
+                            binary=True,
+                            max_df=1.0,
+                            min_df=5,)
+    pipeline=Pipeline(steps=[('vectorizer',countVectorizer),
+                            ('model', BernoulliNB())])
+    param_grid={'model__alpha':np.linspace(0.1,1.0,10)}
+    gridSearchCV=GridSearchCV(estimator=pipeline,
+                            param_grid=param_grid,
+                            cv=5,
+                            scoring='accuracy',
+                            return_train_score=True,
+                            refit=True)
+    gridSearchCV.fit(x_train, y_train)
     return gridSearchCV
 
 
