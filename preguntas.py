@@ -10,7 +10,9 @@ Naive Bayes para determinar el sentimiento de un comentario.
 """
 import numpy as np
 import pandas as pd
-
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from nltk.stem import PorterStemmer
 
 def pregunta_01():
     """
@@ -60,7 +62,7 @@ def pregunta_02():
     """
 
     # Importe train_test_split
-    from ____ import ____
+    '''from ____ import ____
 
     # Cargue los datos generados en la pregunta 01.
     x_tagged, y_tagged, _, _ = pregunta_01()
@@ -74,7 +76,12 @@ def pregunta_02():
         random_state=____,
     )
 
-    # Retorne `X_train`, `X_test`, `y_train` y `y_test`
+    # Retorne `X_train`, `X_test`, `y_train` y `y_test`'''
+    x_tagged, y_tagged, _,_ = pregunta_01()
+    x_train, x_test, y_train, y_test = train_test_split(x_prueba, 
+                                                    y_tagged, 
+                                                    test_size=0.1, 
+                                                    random_state=12345)    
     return x_train, x_test, y_train, y_test
 
 
