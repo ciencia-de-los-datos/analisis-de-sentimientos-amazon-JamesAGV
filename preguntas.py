@@ -21,7 +21,7 @@ def pregunta_01():
     # Lea el archivo `amazon_cells_labelled.tsv` y cree un DataFrame usando pandas.
     # Etiquete la primera columna como `msg` y la segunda como `lbl`. Esta función
     # retorna el dataframe con las dos columnas.
-    df = ____(
+    '''df = ____(
         ____,
         sep=____,
         header=____,
@@ -38,7 +38,18 @@ def pregunta_01():
     x_untagged = ____["____"]
     y_untagged = ____["____"]
 
-    # Retorne los grupos de mensajes
+    # Retorne los grupos de mensajes'''
+    df=pd.read_csv('/content/amazon_cells_labelled.tsv',
+                   sep='\t',
+                   header=None)
+    df.columns=['msg','lbl']
+    df_tagged=df[df.lbl.notna()]
+    df_untagged=df[df.lbl.isna()]
+    x_tagged=df_tagged.msg
+    y_tagged=df_tagged.lbl
+    x_untagged=df_untagged.msg
+    y_untagged=df_untagged.lbl
+    return x_tagged, y_tagged, x_untagged, y_untagged   
     return x_tagged, y_tagged, x_untagged, y_untagged
 
 
