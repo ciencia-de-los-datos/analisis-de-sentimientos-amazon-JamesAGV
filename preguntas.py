@@ -39,7 +39,7 @@ def pregunta_01():
     y_untagged = ____["____"]
 
     # Retorne los grupos de mensajes'''
-    df=pd.read_csv('/content/amazon_cells_labelled.tsv',
+    df=pd.read_csv('amazon_cells_labelled.tsv',
                    sep='\t',
                    header=None)
     df.columns=['msg','lbl']
