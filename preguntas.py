@@ -126,7 +126,10 @@ def pregunta_04():
     x_train, _, y_train, _ = pregunta_02()
 
     # Obtenga el analizador de la pregunta 3.
-    analyzer = pregunta_03()
+    #analyzer = pregunta_03()
+    stemmer = PorterStemmer()
+    analyzer=CountVectorizer().build_analyzer()
+    analizador=lambda x: (stemmer.stem(w) for w in analyzer(x))
 
     # Cree una instancia de CountVectorizer que use el analizador de palabras
     # de la pregunta 3. Esta instancia debe retornar una matriz binaria. El
@@ -174,14 +177,14 @@ def pregunta_04():
 
     # Retorne el mejor modelo
     return gridSearchCV'''
-    countVectorizer=CountVectorizer(analyzer=analyzer,
+    countVectorizer=CountVectorizer(analyzer=analizador,
                             lowercase=True,
                             stop_words='english',
                             token_pattern=r"(?u)\b\w\w+\b",
                             binary=True,
                             max_df=1.0,
                             min_df=5,)
-    countVectorizer.fit(x_train)
+    #countVectorizer.fit(x_train)
     pipeline=Pipeline(steps=[('vectorizer',countVectorizer),
                             ('model', BernoulliNB())])
     param_grid={'model__alpha':np.linspace(0.1,1.0,10)}
