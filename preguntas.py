@@ -174,7 +174,7 @@ def pregunta_04():
 
     # Retorne el mejor modelo
     return gridSearchCV'''
-    countVectorizer=CountVectorizer(analyzer=pregunta_03(),
+    countVectorizer=CountVectorizer(analyzer=analyzer,
                             lowercase=True,
                             stop_words='english',
                             token_pattern=r"(?u)\b\w\w+\b",
