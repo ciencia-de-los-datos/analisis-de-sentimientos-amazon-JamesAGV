@@ -92,7 +92,7 @@ def pregunta_03():
     """
     # Importe el stemmer de Porter
     # Importe CountVectorizer
-    from ____ import ____
+    '''from ____ import ____
 
     # Cree un stemeer que use el algoritmo de Porter.
     stemmer = ____
@@ -100,7 +100,9 @@ def pregunta_03():
     # Cree una instancia del analizador de palabras (build_analyzer)
     analyzer = ____().____()
 
-    # Retorne el analizador de palabras
+    # Retorne el analizador de palabras'''
+    stemmer = PorterStemmer()
+    analyzer=CountVectorizer().build_analyzer()
     return lambda x: (stemmer.stem(w) for w in analyzer(x))
 
 
